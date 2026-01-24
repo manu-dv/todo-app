@@ -30,27 +30,49 @@ export const renderTodos = (elementId, todosArr) => {
   todoContainer.innerHTML = "";
 
   todosArr.forEach((todo) => {
-    const todoDeleteButton = document.createElement("button");
-    todoDeleteButton.classList.add("delete-todo");
-    todoDeleteButton.innerText = "x";
-
-    const todoSpan = document.createElement("span");
-    todoSpan.innerText = todo.description;
-
-    const todoElement = document.createElement("article");
-    todoElement.setAttribute("data-id", todo.id);
-    todoElement.classList.add("full-todo-element");
-    todo.done ? todoElement.classList.add("completed") : "";
-    todoElement.append(todoSpan);
-    todoElement.append(todoDeleteButton);
+    const todoDeleteButton = createDeleteTodoButton();
+    const todoSpan = createSpanTodo(todo);
+    const todoElement = createTodoElement(todo, todoSpan, todoDeleteButton);
 
     todoContainer.append(todoElement);
   });
 
+  incrementTodoCounter();
+};
+
+const createDeleteTodoButton = () => {
+  const todoDeleteButton = document.createElement("button");
+  todoDeleteButton.classList.add("delete-todo");
+  todoDeleteButton.innerText = "X";
+
+  return todoDeleteButton;
+};
+
+const createSpanTodo = (todo) => {
+  const todoSpan = document.createElement("span");
+  todoSpan.innerText = todo.description;
+
+  return todoSpan;
+};
+
+const createTodoElement = (todo, todoSpan, todoDeleteButton) => {
+  const todoElement = document.createElement("article");
+  todoElement.setAttribute("data-id", todo.id);
+  todoElement.classList.add("full-todo-element");
+  todo.done ? todoElement.classList.add("completed") : "";
+  todoElement.append(todoSpan);
+  todoElement.append(todoDeleteButton);
+
+  return todoElement;
+};
+
+const incrementTodoCounter = () => {
   const todoCounter = document.querySelector(ELEMENT_ID.TodoNumber);
-  if (!todoCounter) throw new Error(`Elemento ${ELEMENT_ID.TodoNumber} no existe`);
+  if (!todoCounter)
+    throw new Error(`Elemento ${ELEMENT_ID.TodoNumber} no existe`);
   todoCounter.innerText = getTodosLength();
-  
+
+  return todoCounter;
 };
 
 const initTodoEvents = () => {

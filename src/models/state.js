@@ -13,15 +13,15 @@ const state = {
 const STORAGE_KEY = "todos";
 
 const saveToStorage = () => {
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(state.todos));
-}
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state.todos));
+};
 
 const loadFromStorage = () => {
   const todos = JSON.parse(localStorage.getItem(STORAGE_KEY));
   if (!todos) return;
 
   state.todos = todos;
-}
+};
 
 export const getTodos = () => {
   return state.todos;
@@ -58,7 +58,7 @@ export const addTodo = (description) => {
 export const deleteTodo = (todoId) => {
   if (!todoId) throw new Error(`El data-id ${todoId} no existe`);
   state.todos = state.todos.filter((todo) => todo.id !== todoId);
-  console.log(state.todos)
+  console.log(state.todos);
   saveToStorage();
 };
 
@@ -75,6 +75,6 @@ export const toggleTodo = (todoId) => {
 };
 
 export const getTodosLength = () => {
-  const pendingTodosNum = state.todos.filter(todo => !todo.done);
+  const pendingTodosNum = state.todos.filter((todo) => !todo.done);
   return pendingTodosNum.length;
-}
+};

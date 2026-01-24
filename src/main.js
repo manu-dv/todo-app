@@ -1,5 +1,13 @@
 import { initTodoApp, renderTodos } from "./models/ui.js";
-import { getTodosByFilter, addTodo, deleteCompletedTodos, toggleTodo, getCurrentFilter, setFilter, deleteTodo } from "./models/state.js";
+import {
+  getTodosByFilter,
+  addTodo,
+  deleteCompletedTodos,
+  toggleTodo,
+  getCurrentFilter,
+  setFilter,
+  deleteTodo,
+} from "./models/state.js";
 import "./styles/style.css";
 
 const rerender = () => {
@@ -25,8 +33,8 @@ initTodoApp("#app", {
   },
   onDeleteTodo: (todoId) => {
     deleteTodo(todoId);
-    rerender()
-  }
+    rerender();
+  },
 });
 
 rerender();

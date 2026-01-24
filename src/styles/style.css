@@ -1,3 +1,124 @@
+:root {
+  --background-color: #ecfdf5;
+  --app-color: #ffffff;
+  --text-color: #064e3b;
+  --text-color-other: #6b7280;
+  --accent-color: #10b981;
+  --completed-color: #10b981;
+  --hover-color: #d1fae5;
+}
+
+* {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+}
+
+#app {
+  background-color: var(--app-color);
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
+  width: 100%;
+  max-width: 600px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.header-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.todo-counter {
+  display: block;
+  margin-bottom: 16px;
+}
+
+.input-filter-section {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.input-filter-section input,
+.input-filter-section select,
+.input-filter-section button {
+  display: flex;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid var(--accent-color);
+  color: var(--text-color-other);
+}
+
+.input-filter-section input:focus,
+.input-filter-section select:focus {
+  outline: none;
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+}
+
+#delete-completed-button {
+  background-color: var(--accent-color);
+  color: white;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#delete-completed-button:active {
+  transform: scale(0.95);
+}
+
+.todo-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.full-todo-element {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--background-color);
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+.full-todo-element:hover {
+  background-color: var(--hover-color);
+}
+
+.full-todo-element.completed span {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+.full-todo-element button {
+  opacity: 0;
+  color: var(--text-color-other);
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.full-todo-element:hover button {
+  opacity: 1;
+}
+
 .completed {
-    text-decoration: line-through;
+  background-color: var(--completed-color);
 }
