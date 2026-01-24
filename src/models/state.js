@@ -10,6 +10,19 @@ const state = {
   filter: FILTERS.ALL,
 };
 
+const STORAGE_KEY = "todos";
+
+const saveToStorage = () => {
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(state.todos));
+}
+
+const loadFromStorage = () => {
+  const todos = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (!todos) return;
+
+  state.todos = todos;
+}
+
 export const getTodos = () => {
   return state.todos;
 };
@@ -23,6 +36,7 @@ export const setFilter = (filter = FILTERS.ALL) => {
 };
 
 export const getTodosByFilter = (filter = FILTERS.ALL) => {
+  loadFromStorage();
   switch (filter) {
     case FILTERS.ALL:
       return state.todos;
@@ -38,22 +52,26 @@ export const getTodosByFilter = (filter = FILTERS.ALL) => {
 export const addTodo = (description) => {
   if (!description) throw new Error("La descripción no puede estar vacía");
   state.todos.push(new TodoModel(description));
+  saveToStorage();
 };
 
 export const deleteTodo = (todoId) => {
   if (!todoId) throw new Error(`El data-id ${todoId} no existe`);
   state.todos = state.todos.filter((todo) => todo.id !== todoId);
   console.log(state.todos)
+  saveToStorage();
 };
 
 export const deleteCompletedTodos = () => {
   state.todos = state.todos.filter((todo) => !todo.done);
+  saveToStorage();
 };
 
 export const toggleTodo = (todoId) => {
   if (!todoId) throw new Error(`El data-id ${todoId} no existe`);
   let modTodo = state.todos.find((todo) => todo.id === todoId);
   modTodo.done = !modTodo.done;
+  saveToStorage();
 };
 
 export const getTodosLength = () => {
