@@ -122,3 +122,10 @@ body {
 .completed {
   background-color: var(--completed-color);
 }
+
+@media (max-width: 600px) {
+  .input-filter-section {
+    flex-direction: column;
+  }
+}
+
