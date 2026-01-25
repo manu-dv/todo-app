@@ -27,6 +27,8 @@ Este proyecto forma parte de una serie de aplicaciones creadas para:
 - 📊 Contador de tareas pendientes
 - 💾 Persistencia en `localStorage`
 
+![Vista de la App](src/media/page.gif)
+
 ---
 
 ## 🛠 Tecnologías utilizadas
