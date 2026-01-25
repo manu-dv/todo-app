@@ -123,6 +123,24 @@ body {
   background-color: var(--completed-color);
 }
 
+.shortcut-up {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 15px 25px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background-color: var(--accent-color);
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.shortcut-up:active {
+    transform: scale(0.95);
+}
+
 @media (max-width: 600px) {
   .input-filter-section {
     flex-direction: column;
